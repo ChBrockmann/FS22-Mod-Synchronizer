@@ -9,6 +9,7 @@ using System.Xml;
 using LS_Mod_Synchronizer.Model;
 using LS_Mod_Synchronizer.Fetcher;
 using LS_Mod_Synchronizer.Extensions;
+using LS_Mod_Synchronizer.Logic;
 
 Console.WriteLine("LS-Mod-Synchronizer");
 

@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using LS_Mod_Synchronizer;
+using LS_Mod_Synchronizer.Logic;
 using LS_Mod_Synchronizer.Model;
 using System;
 using System.Collections.Generic;
