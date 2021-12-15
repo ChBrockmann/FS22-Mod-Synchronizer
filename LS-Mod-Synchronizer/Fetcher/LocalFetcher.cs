@@ -1,11 +1,6 @@
 ﻿using Ionic.Zip;
 using LS_Mod_Synchronizer.Extensions;
 using LS_Mod_Synchronizer.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace LS_Mod_Synchronizer.Fetcher

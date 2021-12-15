@@ -1,10 +1,5 @@
 ﻿using FluentAssertions;
 using LS_Mod_Synchronizer.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTest.Extensions

@@ -1,12 +1,8 @@
 ﻿using FluentAssertions;
-using LS_Mod_Synchronizer;
 using LS_Mod_Synchronizer.Logic;
 using LS_Mod_Synchronizer.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTest

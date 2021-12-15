@@ -1,11 +1,5 @@
-﻿using HtmlAgilityPack;
-using LS_Mod_Synchronizer;
-using System.Net;
+﻿using LS_Mod_Synchronizer;
 using Newtonsoft.Json;
-using System.IO.Compression;
-using Ionic.Zip;
-using ZipFile = Ionic.Zip.ZipFile;
-using System.Xml;
 using LS_Mod_Synchronizer.Model;
 using LS_Mod_Synchronizer.Fetcher;
 using LS_Mod_Synchronizer.Extensions;
