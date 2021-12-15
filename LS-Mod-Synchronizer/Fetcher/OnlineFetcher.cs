@@ -32,7 +32,7 @@ namespace LS_Mod_Synchronizer.Fetcher
 
             foreach (HtmlNode node in childNotes)
             {
-                string detailUrl = Config.BASE_URL + node.ChildNodes[Ressources.INDEX_MOD_NAME].InnerHtml.GetStringBetweenTwoDelimeters(Ressources.MOD_DOWNLOAD_URL_DELIMETER);
+                string detailUrl = Config.BASE_URL + node.ChildNodes[Ressources.INDEX_MOD_NAME].ChildNodes[0].Attributes.First(x => x.Name == "href").Value;
 
                 try
                 {
