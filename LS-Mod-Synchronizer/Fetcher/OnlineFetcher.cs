@@ -1,6 +1,9 @@
 ﻿using HtmlAgilityPack;
 using LS_Mod_Synchronizer.Extensions;
 using LS_Mod_Synchronizer.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LS_Mod_Synchronizer.Fetcher
 {

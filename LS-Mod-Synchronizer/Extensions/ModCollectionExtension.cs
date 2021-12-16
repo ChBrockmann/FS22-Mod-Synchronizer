@@ -1,4 +1,6 @@
 ﻿using LS_Mod_Synchronizer.Model;
+using System;
+using System.Collections.Generic;
 
 namespace LS_Mod_Synchronizer.Extensions
 {

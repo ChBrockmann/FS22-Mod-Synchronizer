@@ -1,4 +1,6 @@
-﻿namespace LS_Mod_Synchronizer.Extensions;
+﻿using System.Linq;
+
+namespace LS_Mod_Synchronizer.Extensions;
 
 public static class StringExtension
 {

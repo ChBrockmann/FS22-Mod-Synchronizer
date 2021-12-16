@@ -2,7 +2,7 @@
 A tool for synchronizing the mods from a Farming Simulator 22 server to your local pc. No FTP-access is needed. The application will download any mod to your local mod folder that is not already present or is present in a different version. Local mods with other versions than on the server will be overwritten All mods in your local folder that are not on the server remain unchanged.
 
 ## How execute
-If you don't want to build the application yourself, you can use the provided application from the "Releases" Tab:
+If you don't want to build the application yourself, you can use the provided application from the [Releases](https://github.com/ChBrockmann/FS22-Mod-Synchronizer/releases) Tab:
 
 <details>
 <summary>English version</summary>
