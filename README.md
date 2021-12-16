@@ -58,7 +58,7 @@ Developed & Co-Developed by
  - [MaKas005](https://github.com/MaKas005)
 
 ## Licenses
-We are realising this project under the MIT license. Look in the [README](README.md) file to get all the details!
+We are realising this project under the MIT license. Look in the [LICENSE](LICENSE) file to get all the details!
 We are using following libraries with licenses:
 |Library|License|
 |---|---|
