@@ -40,11 +40,18 @@ namespace LS_Mod_Synchronizer.Fetcher
         {
             foreach (string file in Directory.GetFiles(Path, "*.zip"))
             {
-                string saveMetaFileAt = Ressources.LOCAL_TMP_DIRECTORY + file.GetLocalFileName();
-                using (ZipFile zf = new ZipFile(file))
+                try
                 {
-                    ZipEntry entry = zf[Ressources.LOCAL_MOD_META_FILENAME];
-                    entry.Extract(saveMetaFileAt);
+                    string saveMetaFileAt = Ressources.LOCAL_TMP_DIRECTORY + file.GetLocalFileName();
+                    using (ZipFile zf = new ZipFile(file))
+                    {
+                        ZipEntry entry = zf[Ressources.LOCAL_MOD_META_FILENAME];
+                        entry.Extract(saveMetaFileAt);
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Could not extract metafile from {file}");
                 }
             }
         }
