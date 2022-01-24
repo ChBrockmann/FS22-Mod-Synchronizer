@@ -11,6 +11,7 @@ namespace LS_Mod_Synchronizer.Fetcher
 {
     public class LocalFetcher
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly string Path;
 
         public LocalFetcher(string Path)
@@ -51,7 +52,7 @@ namespace LS_Mod_Synchronizer.Fetcher
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine($"Could not extract metafile from {file}");
+                    Logger.Info($"Could not extract metafile from {file}");
                 }
             }
         }

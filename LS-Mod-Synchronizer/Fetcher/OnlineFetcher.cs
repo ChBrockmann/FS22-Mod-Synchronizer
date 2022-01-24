@@ -9,6 +9,7 @@ namespace LS_Mod_Synchronizer.Fetcher
 {
     public class OnlineFetcher
     {
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly string Url;
 
         public OnlineFetcher(string Url)
@@ -62,9 +63,9 @@ namespace LS_Mod_Synchronizer.Fetcher
                 }
                 catch (System.Net.WebException e)
                 {
-                    Console.WriteLine("Error while fetching mod detail " + e.Message);
-                    Console.WriteLine("Start the program again to try again");
-                    Console.WriteLine("Press enter to close...");
+                    Logger.Info("Error while fetching mod detail " + e.Message);
+                    Logger.Info("Start the program again to try again");
+                    Logger.Info("Press enter to close...");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }

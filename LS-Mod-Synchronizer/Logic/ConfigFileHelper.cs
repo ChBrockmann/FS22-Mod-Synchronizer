@@ -11,11 +11,7 @@ namespace LS_Mod_Synchronizer.Logic
 {
     internal class ConfigFileHelper
     {
-        public ConfigFileHelper()
-        {
-
-        }
-
+        private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
         public void CreateExampleFile(string filename)
         {
             if (!File.Exists(Ressources.CONFIG_FILENAME))
@@ -32,7 +28,7 @@ namespace LS_Mod_Synchronizer.Logic
             }
             catch (Exception e)
             {
-                Console.WriteLine("There is an error loading your config." + e);
+                Logger.Info("There is an error loading your config." + e);
             }
 
         }

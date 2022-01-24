@@ -8,6 +8,7 @@ namespace LS_Mod_Synchronizer;
 
 public class ModDownloader
 {
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
     private readonly string Path;
 
     public ModDownloader(string Path)
@@ -19,7 +20,7 @@ public class ModDownloader
     {
         foreach (var mod in mods)
         {
-            Console.WriteLine($"Downloading {mod.Title}");
+            Logger.Info($"Downloading {mod.Title}");
             using (var client = new WebClient())
             {
                 try
@@ -28,9 +29,9 @@ public class ModDownloader
                 }
                 catch (System.Net.WebException e)
                 {
-                    Console.WriteLine($"Error downloading {mod.Title} " + e.Message);
-                    Console.WriteLine("Start the program again to try again");
-                    Console.WriteLine("Press enter to close...");
+                    Logger.Info($"Error downloading {mod.Title} " + e.Message);
+                    Logger.Info("Start the program again to try again");
+                    Logger.Info("Press enter to close...");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
