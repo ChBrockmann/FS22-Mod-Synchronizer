@@ -5,20 +5,25 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LS-Mod-Synchronizer", "LS-Mod-Synchronizer\LS-Mod-Synchronizer.csproj", "{57688019-9E1B-43BF-80C9-1D48FB846C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{8EA9690F-964D-46EB-89A0-5A552B747336}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{8EA9690F-964D-46EB-89A0-5A552B747336}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Publish|Any CPU = Publish|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57688019-9E1B-43BF-80C9-1D48FB846C55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EA9690F-964D-46EB-89A0-5A552B747336}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EA9690F-964D-46EB-89A0-5A552B747336}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA9690F-964D-46EB-89A0-5A552B747336}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{8EA9690F-964D-46EB-89A0-5A552B747336}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{8EA9690F-964D-46EB-89A0-5A552B747336}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EA9690F-964D-46EB-89A0-5A552B747336}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
