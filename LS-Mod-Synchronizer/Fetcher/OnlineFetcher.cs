@@ -32,42 +32,28 @@ namespace LS_Mod_Synchronizer.Fetcher
                 .Skip(1) //First one is table Head
                 .SkipLast(1); //Skip the last element
 
-            HtmlWeb detailClient = new HtmlWeb();
-
             foreach (HtmlNode node in childNotes)
             {
-                string detailUrl = Config.BASE_URL + node.ChildNodes[Ressources.INDEX_MOD_NAME].ChildNodes[0].Attributes.First(x => x.Name == "href").Value;
-
                 try
                 {
+                    string modName = node.ChildNodes[Ressources.INDEX_MOD_NAME].InnerText;
+                    string modVersion = node.ChildNodes[Ressources.INDEX_MOD_VERSION].Attributes.First(a => a.Name == "title").Value;
+                    string modDownloadLink = node.ChildNodes[15].ChildNodes[0].Attributes.First(a => a.Name == "href").Value;
 
-                    var detailSite = detailClient.Load(detailUrl);
-                    HtmlNodeCollection detailNodes = detailSite.DocumentNode.SelectNodes("//table");
-
-                    string detailNodeName = detailNodes[0].ChildNodes[3].ChildNodes[1].InnerText;
-                    string detailNodeVersion = detailNodes[0].ChildNodes[5].ChildNodes[1].InnerText;
-                    string detailDownloadRelLink = detailNodes[0].ChildNodes[9].ChildNodes[1].ChildNodes[0].Attributes[1].Value;
-
-
-                    string url = node.ChildNodes[Ressources.INDEX_MOD_URL].InnerHtml;
-
-                    string absUrl = Config.BASE_URL + detailDownloadRelLink;
+                    string absUrl = Config.BASE_URL + modDownloadLink;
 
                     result.Add(new Mod()
                     {
-                        Title = detailNodeName,
-                        Version = detailNodeVersion,
+                        Title = modName,
+                        Version = modVersion,
                         Url = absUrl,
                         ModType = ModType.Online
                     });
                 }
-                catch (System.Net.WebException e)
+                catch(Exception e)
                 {
-                    Logger.Info("Error while fetching mod detail " + e.Message);
-                    Logger.Info("Start the program again to try again");
-                    Logger.Info("Press enter to close...");
-                    Console.ReadLine();
-                    Environment.Exit(0);
+                    Logger.Error($"Error trying to fetch information for mod.");
+                    Logger.Error(e);
                 }
             }
             return result;

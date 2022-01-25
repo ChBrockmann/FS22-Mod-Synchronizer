@@ -8,9 +8,7 @@
 		<Nullable>enable</Nullable>
 
 		<PublishSingleFile Condition="'$(Configuration)' == 'Release'">true</PublishSingleFile>
-		<Platform>x64</Platform>
-		<Configuration>Release</Configuration>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<PublishSingleFile Condition="'$(Configuration)'=='Publish'">true</PublishSingleFile>
 	</PropertyGroup>
 
 	<ItemGroup>

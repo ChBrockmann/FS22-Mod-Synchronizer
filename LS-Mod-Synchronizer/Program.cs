@@ -71,11 +71,12 @@ public class Program
 
 
             Logger.Info("Press enter to close...");
-            Console.ReadLine();
-        }
+        Console.ReadLine();
+    }
         catch (Exception e)
         {
-            
+            Logger.Fatal(e);
+            Logger.Fatal($"Current config. URL: \"{Config.BASE_URL}\"; FOLDER_PATH: \"{Config.LOCAL_MOD_FOLDER_PATH}\"");
         }
     }
 

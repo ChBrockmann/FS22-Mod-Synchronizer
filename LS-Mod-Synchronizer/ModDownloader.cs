@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace LS_Mod_Synchronizer;
 
@@ -26,14 +27,11 @@ public class ModDownloader
                 try
                 {
                     client.DownloadFile(mod.Url, Path + "\\" + mod.Url.Replace($"{Config.BASE_URL}mods/", ""));
+                    Thread.Sleep(1000);
                 }
                 catch (System.Net.WebException e)
                 {
-                    Logger.Info($"Error downloading {mod.Title} " + e.Message);
-                    Logger.Info("Start the program again to try again");
-                    Logger.Info("Press enter to close...");
-                    Console.ReadLine();
-                    Environment.Exit(0);
+                    Logger.Info($"Error downloading {mod.Title} ");
                 }
             }
         }
