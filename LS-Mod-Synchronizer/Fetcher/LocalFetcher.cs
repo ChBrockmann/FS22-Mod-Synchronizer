@@ -73,6 +73,10 @@ namespace LS_Mod_Synchronizer.Fetcher
 
                         XmlNode versionNode = xmlDocument.SelectSingleNode("/modDesc/version");
                         XmlNode nameNode = xmlDocument.SelectSingleNode("/modDesc/title/en");
+                        if(nameNode == null)
+                        {
+                            nameNode = xmlDocument.SelectSingleNode("/modDesc/title");
+                        }
 
                         mods.Add(new Mod()
                         {
