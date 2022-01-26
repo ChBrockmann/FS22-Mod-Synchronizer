@@ -19,7 +19,7 @@ namespace UnitTest
         [Fact]
         public void NoLocalMods_ShouldReturnAll()
         {
-            List<Mod> input = new List<Mod>()
+            List<Mod> onlineMods = new List<Mod>()
             {
                 new Mod()
                 {
@@ -37,7 +37,9 @@ namespace UnitTest
                 }
             };
 
-            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(input);
+            List<Mod> localMods = new();
+
+            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(localMods, onlineMods);
 
             output.Should().HaveCount(2);
         }
@@ -45,7 +47,7 @@ namespace UnitTest
         [Fact]
         public void NoOnlineMods_ShouldReturnEmptyList()
         {
-            List<Mod> input = new List<Mod>()
+            List<Mod> localMods = new List<Mod>()
             {
                 new Mod()
                 {
@@ -63,7 +65,9 @@ namespace UnitTest
                 }
             };
 
-            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(input);
+            List<Mod> onlineMods = new();
+
+            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(localMods, onlineMods);
 
             output.Should().HaveCount(0);
         }
@@ -71,7 +75,18 @@ namespace UnitTest
         [Fact]
         public void TwoOnlineMods_OneLocalMod_ShouldReturnOneMod_VersionAreEqual()
         {
-            List<Mod> input = new List<Mod>()
+            List<Mod> localMods = new List<Mod>()
+            {
+                new Mod()
+                {
+                    Title = "Mod #1",
+                    Version = "1.0.0",
+                    Url = "",
+                    ModType = ModType.Local
+                }
+            };
+
+            List<Mod> onlineMods = new List<Mod>()
             {
                 new Mod()
                 {
@@ -86,17 +101,10 @@ namespace UnitTest
                     Version = "2.0.0",
                     Url = "",
                     ModType = ModType.Online
-                },
-                new Mod()
-                {
-                    Title = "Mod #1",
-                    Version = "1.0.0",
-                    Url = "",
-                    ModType = ModType.Local
                 }
             };
 
-            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(input);
+            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(localMods, onlineMods);
 
             output.Should().HaveCount(1);
             output.First().Title.Should().Be("Mod #2");
@@ -105,7 +113,7 @@ namespace UnitTest
         [Fact]
         public void OnlineModIsDifferentVersion_ShouldReturnOnlineMod()
         {
-            List<Mod> input = new List<Mod>()
+            List<Mod> localMods = new List<Mod>()
             {
                 new Mod()
                 {
@@ -113,7 +121,11 @@ namespace UnitTest
                     Version = "1.0.0",
                     Url = "",
                     ModType = ModType.Local
-                },
+                }
+            };
+
+            List<Mod> onlineMods = new List<Mod>()
+            {
                 new Mod()
                 {
                     Title = "Mod #1",
@@ -123,7 +135,7 @@ namespace UnitTest
                 }
             };
 
-            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(input);
+            IEnumerable<Mod> output = comparer.GetListOfAllModsToDownload(localMods, onlineMods);
 
             output.Should().HaveCount(1);
             output.First().Title.Should().Be("Mod #1");

@@ -6,10 +6,11 @@ namespace LS_Mod_Synchronizer.Logic
 {
     public class ModComparer
     {
-        public IEnumerable<Mod> GetListOfAllModsToDownload(IEnumerable<Mod> modList)
+        public IEnumerable<Mod> GetListOfAllModsToDownload(IEnumerable<Mod> localMods, IEnumerable<Mod> onlineMods)
         {
-            IEnumerable<Mod> onlineMods = modList.Where(m => m.ModType == ModType.Online).OrderBy(m => m.Title);
-            IEnumerable<Mod> localMods = modList.Where(m => m.ModType == ModType.Local).OrderBy(m => m.Title);
+            onlineMods = onlineMods.OrderBy(m => m.Title);
+            localMods = localMods.OrderBy(m => m.Title);
+
             List<Mod> result = new List<Mod>();
 
             foreach(Mod onlineMod in onlineMods)

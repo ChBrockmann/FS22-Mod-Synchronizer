@@ -9,23 +9,17 @@ using System.Xml;
 
 namespace LS_Mod_Synchronizer.Fetcher
 {
-    public class LocalFetcher
+    public class LocalFetcher : ILocalFetcher
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly string Path;
 
-        public LocalFetcher(string Path)
-        {
-            this.Path = Path;
-        }
-
-        public ICollection<Mod> Fetch()
+        public ICollection<Mod> Fetch(string path)
         {
             DeleteDirectoryRecursivley(Ressources.LOCAL_TMP_DIRECTORY);
 
-            ExtractMetaFile();
+            ExtractMetaFile(path);
 
-            return ParseMetaFiles(Ressources.LOCAL_TMP_DIRECTORY);
+            return ParseMetaFiles(Ressources.LOCAL_TMP_DIRECTORY, path);
         }
 
         private void DeleteDirectoryRecursivley(string directory)
@@ -37,9 +31,9 @@ namespace LS_Mod_Synchronizer.Fetcher
             catch (Exception) { }
         }
 
-        private void ExtractMetaFile()
+        private void ExtractMetaFile(string path)
         {
-            foreach (string file in Directory.GetFiles(Path, "*.zip"))
+            foreach (string file in Directory.GetFiles(path, "*.zip"))
             {
                 try
                 {
@@ -57,7 +51,7 @@ namespace LS_Mod_Synchronizer.Fetcher
             }
         }
 
-        private ICollection<Mod> ParseMetaFiles(string directory)
+        private ICollection<Mod> ParseMetaFiles(string directory, string path)
         {
             List<Mod> mods = new List<Mod>();
             try
@@ -83,7 +77,7 @@ namespace LS_Mod_Synchronizer.Fetcher
                             Title = nameNode.InnerText,
                             Version = versionNode.InnerText,
                             ModType = ModType.Local,
-                            Url = GetModZipFile(file)
+                            Url = GetModZipFile(file, path)
                         });
                     }
                     catch (Exception) { }
@@ -94,9 +88,9 @@ namespace LS_Mod_Synchronizer.Fetcher
             return mods;
         }
 
-        private string GetModZipFile(string file)
+        private string GetModZipFile(string file, string path)
         {
-            var listOfAllZips = Directory.GetFiles(Path, "*.zip");
+            var listOfAllZips = Directory.GetFiles(path, "*.zip");
             return listOfAllZips.First(a => a.Contains(a.GetPrevDirectoryName()));
         }
     }

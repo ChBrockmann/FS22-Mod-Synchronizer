@@ -11,7 +11,7 @@ namespace LS_Mod_Synchronizer.Extensions
         {
             foreach (Mod mod in mods)
             {
-                Logger.Info($"{mod.Title} - {mod.Version} - {mod.Url} - {mod.ModType}");
+                Logger.Info($"{mod.Title} - {mod.Version} - {mod.ModType}");
             }
         }
     }

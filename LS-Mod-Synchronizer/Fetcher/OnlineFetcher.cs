@@ -1,29 +1,28 @@
 ﻿using HtmlAgilityPack;
 using LS_Mod_Synchronizer.Extensions;
 using LS_Mod_Synchronizer.Model;
+using LS_Mod_Synchronizer.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LS_Mod_Synchronizer.Fetcher
 {
-    public class OnlineFetcher
+    public class OnlineFetcher : IOnlineFetcher
     {
         private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly string Url;
+        private readonly IHtmlWebLoader _htmlWebLoader;
 
-        public OnlineFetcher(string Url)
+        public OnlineFetcher(IHtmlWebLoader htmlWebLoader)
         {
-            this.Url = Url;
+            _htmlWebLoader = htmlWebLoader;
         }
 
-        public ICollection<Mod> Fetch()
+        public ICollection<Mod> Fetch(string Url)
         {
             List<Mod> result = new List<Mod>();
 
-            HtmlWeb web = new HtmlWeb();
-
-            var htmlSite = web.Load(Url);
+            var htmlSite = _htmlWebLoader.Load(Url);
 
             HtmlNodeCollection nodes = htmlSite.DocumentNode.SelectNodes("//table");
 

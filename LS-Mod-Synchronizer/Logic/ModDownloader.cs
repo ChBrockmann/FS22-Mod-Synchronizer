@@ -5,19 +5,13 @@ using System.IO;
 using System.Net;
 using System.Threading;
 
-namespace LS_Mod_Synchronizer;
+namespace LS_Mod_Synchronizer.Logic;
 
-public class ModDownloader
+public class ModDownloader : IModDownloader
 {
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
-    private readonly string Path;
 
-    public ModDownloader(string Path)
-    {
-        this.Path = Path;
-    }
-
-    public void DownloadForceOverride(IEnumerable<Mod> mods)
+    public void DownloadModsAndSaveToPath(IEnumerable<Mod> mods, string Path)
     {
         foreach (var mod in mods)
         {
@@ -35,15 +29,6 @@ public class ModDownloader
                 }
             }
         }
-    }
-
-    private void TryDelete(string filepath)
-    {
-        try
-        {
-            File.Delete(filepath);
-        }
-        catch (Exception) { }
     }
 }
 
