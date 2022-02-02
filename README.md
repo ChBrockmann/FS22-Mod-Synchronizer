@@ -1,7 +1,28 @@
 # FS22-Mod-Synchronizer
+Ein Tool zum automatischen Synchronisieren von Mods auf einem Landwirtschaftssimulator 22 Server mit dem lokalen Computer. Es wird kein FTP-Zugang benötigt. Dieses Programm lädt alle Mods vom Server herunter, die noch nicht in deinem lokalen Mods-Ordner vorhanden sind oder eine andere Version haben. Lokale Mods mit anderen Versionen als die der Mods auf dem Server werden automatisch überschrieben. Mods die nur auf deinem lokalen PC vorhanden sind, jedoch nicht auf dem Server bleiben unberührt.
+
 A tool for synchronizing the mods from a Farming Simulator 22 server to your local pc. No FTP-access is needed. The application will download any mod to your local mod folder that is not already present or is present in a different version. Local mods with other versions than on the server will be overwritten All mods in your local folder that are not on the server remain unchanged.
 
 ## How execute
+Wenn du das Programm nicht selbst builden willst, kannst du dir das fertige Programm vom [Releases](https://github.com/ChBrockmann/FS22-Mod-Synchronizer/releases) Tab herunterladen:
+
+<details>
+<summary>German version</summary>
+<p>
+
+1. Lade dir die neuste Version des `FS22-Mod-Synchronizers` herunter und entpacke die ZIP-Datei. Die Anwendung muss nicht installiert werden.
+2. Nutze eine Konsole deiner Wahl (z.B. cmd, Windows Power Shell, Windows Terminal) und navigiere zum Verzeichnis der entpackten Datei.
+3. Führe den `LS-Mod-Synchronizer` mit dem Befehl `./LS-Mod-Synchronizer.exe` aus.
+4. Beim ersten Start des Programmes existiert noch keine Konfigdatei. Dies wird durch `"No Config found. Created an example configuration!"` angezeigt.
+5. Schließe das Programm und navigiere zur `config.json` Datei in Ordner der entpackten ZIP-Datei. Öffne die `config.json` mit einem Editor deiner Wahl.
+6. Ändere die ServerURL zur IP und Port deines Farming Simulator 22 servers. **Es ist wichtig dass das Format übereinstimmt!** Wenn deine IP `12.34.56.78:9999` ist, muss in der Konfiguration `http://12.34.56.78:9999/` eingetragen werden, **wichtig ist das `http://` am Anfang und `/` am Ende!**
+7. Der ModFolderPath sollte bereits richtig eingestellt sein. Ist der angezeigte Pfad nicht der deines Mod-Ordners, ändere den Pfad darauf ab. **Es ist wichtig, dass die Ordner mit einem doppelten `\\` getrennt werden. Einfache `\` beschädigen die Konfiguration!**
+8. Speichere die `config.json` Datei ab.
+9.  Nutze eine Konsole um den `LS-Mod-Synchronizer.exe` erneut auszuführen. Das Programm wird jetzt alle fehlenden Mods und Mods mit einer anderen Version vom Server in deinen Mods-Ordner herunterladen. 
+
+</p>
+</details>
+
 If you don't want to build the application yourself, you can use the provided application from the [Releases](https://github.com/ChBrockmann/FS22-Mod-Synchronizer/releases) Tab:
 
 <details>
@@ -21,33 +42,24 @@ If you don't want to build the application yourself, you can use the provided ap
 </p>
 </details>
 
-<details>
-<summary>German version</summary>
-<p>
 
-1. Lade dir die neuste Version des `FS22-Mod-Synchronizers` herunter und entpacke die ZIP-Datei. Die Anwendung muss nicht installiert werden.
-2. Nutze eine Konsole deiner Wahl (z.B. cmd, Windows Power Shell, Windows Terminal) und navigiere zum Verzeichnis der entpackten Datei.
-3. Führe den `LS-Mod-Synchronizer` mit dem Befehl `./LS-Mod-Synchronizer.exe` aus.
-4. Beim ersten Start des Programmes existiert noch keine Konfigdatei. Dies wird durch `"No Config found. Created an example configuration!"` angezeigt.
-5. Schließe das Programm und navigiere zur `config.json` Datei in Ordner der entpackten ZIP-Datei. Öffne die `config.json` mit einem Editor deiner Wahl.
-6. Ändere die ServerURL zur IP und Port deines Farming Simulator 22 servers. **Es ist wichtig dass das Format übereinstimmt!** Wenn deine IP `12.34.56.78:9999` ist, muss in der Konfiguration `http://12.34.56.78:9999/` eingetragen werden, **wichtig ist das `http://` am Anfang und `/` am Ende!**
-7. Der ModFolderPath sollte bereits richtig eingestellt sein. Ist der angezeigte Pfad nicht der deines Mod-Ordners, ändere den Pfad darauf ab. **Es ist wichtig, dass die Ordner mit einem doppelten `\\` getrennt werden. Einfache `\` beschädigen die Konfiguration!**
-8.  ModFolderPath should be preconfigured correctly. If the displayed path is not the path to your mods-Folder, change the path accordingly. **It is important to use double `\\` as seperators! Singe `\` will corrupt the configuration** 
-9. Speichere die `config.json` Datei ab.
-10. Nutze eine Konsole um den `LS-Mod-Synchronizer.exe` erneut auszuführen. Das Programm wird jetzt alle fehlenden Mods und Mods mit einer anderen Version vom Server in deinen Mods-Ordner herunterladen. 
-
-</p>
-</details>
 
 
 ## How to build 
 
-**You need to have the Dotnet Core SDK version 6.0 installed!**
+**Es muss die Dotnet Core SDK version 6.0 oder höher installiert sein!**
+1. Klone dieses Repository
+2. Führe `dotnet restore` aus
+3. Führe `dotnet run` aus
+
+**You need to have the Dotnet Core SDK version 6.0 or higher installed!**
 1. Clone this repository
 2. Run `dotnet restore`
 3. Run `dotnet run`
 
 ## Issues
+Eröffne gerne ein Issue für alle Fehler die dir auffallen. Aber schau bitte zunächst nach, ob das selbe Issue schon gestellt und beantwortet wurde. Gerne kannst du auch ein Issue für alle Wünsche, die du an eine neue Version des Programms hast, erstellen. 
+
 Feel free to open an issue to any problem that you might encounter. But please check if it might already have been answered!
 Also open an issue for all feature request you might have!
 
